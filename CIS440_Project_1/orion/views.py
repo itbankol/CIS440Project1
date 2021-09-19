@@ -3,8 +3,8 @@ from django.http import HttpResponse
 
 # Create your views here.
 def home(request):
-    return HttpResponse('<h1>Home</h1>')
+    return render(request, 'orion/index.html')
 
 
 def create_user(request):
-    return HttpResponse('<h1>Create User</h1>')
+    return render(request, 'orion/create_user.html')
