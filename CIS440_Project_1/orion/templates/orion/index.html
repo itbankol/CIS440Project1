@@ -8,11 +8,12 @@
 </head>
 <body>
     <h1>Event Management System</h1>
-    <button id="createUserId" onclick=create_user>Create User</button>
-    <button id="editUserId" onclick=edit_user>Edit User</button>
-    <button id="blacklistingId" onclick=blacklisting>Manage Blacklisting</button>
-    <button id="createEventId" onclick=create_event>Create Event</button>
-    <button id="editEventId" onclick=edit_event>Edit Event</button>
+    <a id="homeId" href="{% url 'home' %}">Create User</a>
+    <a id="createUserId" href="{% url 'user-registration' %}">Create User</a>
+    <a id="editUserId" href="{% url 'edit-user' %}">Edit User</a>
+    <a id="blacklistingId" href="{% url 'blacklist' %}">Manage Blacklisting</a>
+    <a id="createEventId" href="{% url 'create-new-event' %}">Create Event</a>
+    <a id="editEventId" href="{% url 'edit-event' %}">Edit Event</a>
 
     <div id="body window"></div>
 
