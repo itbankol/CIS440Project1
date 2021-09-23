@@ -30,3 +30,15 @@ def create_new_event(request):
         form = EventCreationForm()
 
     return render(request, 'orion/create_new_event.html', {'form': form})
+
+
+def blacklist(request):
+    return render(request, 'orion/blacklist.html')
+
+
+def edit_event(request):
+    return render(request, 'orion/edit_event.html')
+
+
+def edit_user(request):
+    return render(request, 'orion/edit_user.html')
