@@ -1,10 +1,44 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+# from django.http import HttpResponse
+from django.contrib import messages
+from .forms import RegisterUserForm, EventCreationForm
 
-# Create your views here.
+
 def home(request):
     return render(request, 'orion/index.html')
 
 
-def create_user(request):
-    return render(request, 'orion/create_user.html')
+def user_registration(request):
+    if request.method == 'POST':
+        form = RegisterUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/') # the parameter inside the redirect method takes a string of a Django 'urls.py' name
+    else:
+        form = RegisterUserForm()
+
+    return render(request, 'orion/user_registration.html', {'form': form})
+
+
+def create_new_event(request):
+    if request.method == 'POST':
+        form = EventCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else: 
+        form = EventCreationForm()
+
+    return render(request, 'orion/create_new_event.html', {'form': form})
+
+
+def blacklist(request):
+    return render(request, 'orion/blacklist.html')
+
+
+def edit_event(request):
+    return render(request, 'orion/edit_event.html')
+
+
+def edit_user(request):
+    return render(request, 'orion/edit_user.html')
