@@ -18,6 +18,9 @@
     <a id="editEventId" href="{% url 'edit-event' %}">Edit Event</a>
 
     <div id="body window"></div>
+    {% for event in events %}
+    <p>{{event.title}}</p>
+    {% endfor %}
 
 </body>
 </html>

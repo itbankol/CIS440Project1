@@ -7,7 +7,8 @@ from .models import Event
 
 
 def home(request):
-    return render(request, 'orion/index.html')
+    events = Event.objects.all()
+    return render(request, 'orion/index.html', {'events': events})
 
 
 def user_registration(request):
@@ -44,3 +45,11 @@ def edit_event(request):
 
 def edit_user(request):
     return render(request, 'orion/edit_user.html')
+
+
+def my_events(request):
+    return render(request, 'orion/my_events.html')
+
+
+def events_registered_for(request):
+    return render(request, 'orion/events_registered_for.html')
