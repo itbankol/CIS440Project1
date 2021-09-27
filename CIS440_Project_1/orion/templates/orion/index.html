@@ -17,7 +17,12 @@
     <a id="createEventId" href="{% url 'create-new-event' %}">Create Event</a>
     <a id="editEventId" href="{% url 'edit-event' %}">Edit Event</a>
 
-    <div id="body window"></div>
+    <div id="body window">
+        <!-- Event Listbox -->
+        {%for event in events%}
+        <li>{{event.title}}  &emsp;{{event.date_of_event}}</li>
+        {% endfor %}
+    </div>
 
 </body>
 </html>
