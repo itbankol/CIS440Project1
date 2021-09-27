@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 # from django.http import HttpResponse
 from django.contrib import messages
 from .forms import RegisterUserForm, EventCreationForm
+from .models import Event
+# from json import loads # needed to convert string from database into json
 
 
 def home(request):
