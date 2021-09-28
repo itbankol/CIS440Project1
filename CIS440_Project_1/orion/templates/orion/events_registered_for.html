@@ -5,8 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events Registered For</title>
+
+    <style>  
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            padding-right: 18px;
+        }
+    </style>
 </head>
 <body>
     <h1>Events Registered For</h1>
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Event Date</th>
+            <th>Description</th>
+            <th>Attendees</th>
+        </tr>
+        {% for event in events %}
+            {% if user.username in event.attendees %}
+                <tr>
+                    <td>{{ event.title }}</td>
+                    <td>{{ event.author }}</td>
+                    <td>{{ event.date_of_event }}</td>
+                    <td>{{ event.description }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+
+    <br><br><br>
+    <p></p>
 </body>
 </html>

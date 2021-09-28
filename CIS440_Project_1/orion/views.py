@@ -1,11 +1,10 @@
 from django.shortcuts import render, redirect
-# from django.http import HttpResponse
-from django.contrib import messages
+# from django.contrib import messages
 from .forms import RegisterUserForm, EventCreationForm
 from .models import Event
-# from json import loads # needed to convert string from database into json
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def home(request):
     events = Event.objects.all()
     return render(request, 'orion/index.html', {'events': events})
@@ -23,6 +22,7 @@ def user_registration(request):
     return render(request, 'orion/user_registration.html', {'form': form})
 
 
+@login_required
 def create_new_event(request):
     if request.method == 'POST':
         form = EventCreationForm(request.POST)
@@ -35,21 +35,23 @@ def create_new_event(request):
     return render(request, 'orion/create_new_event.html', {'form': form})
 
 
+@login_required
 def blacklist(request):
     return render(request, 'orion/blacklist.html')
 
 
+@login_required
 def edit_event(request):
-    return render(request, 'orion/edit_event.html')
+    events = Event.objects.all()
+    return render(request, 'orion/edit_event.html', {'events': events})
 
 
+@login_required
 def edit_user(request):
     return render(request, 'orion/edit_user.html')
 
 
-def my_events(request):
-    return render(request, 'orion/my_events.html')
-
-
+@login_required
 def events_registered_for(request):
-    return render(request, 'orion/events_registered_for.html')
+    events = Event.objects.all()
+    return render(request, 'orion/events_registered_for.html', {'events': events})
