@@ -10,6 +10,17 @@
     <form method="post">
         {% csrf_token %}
         <h1>Create A New Event</h1>
+
+        <a id="homeId" href="{% url 'home' %}">Home</a>
+        <!-- <a id="createUserId" href="{% url 'user-registration' %}">Create User</a> -->
+        <a id="editUserId" href="{% url 'edit-user' %}">Edit User</a>
+        <a id="blacklistingId" href="{% url 'blacklist' %}">Manage Blacklisting</a>
+        <a id="createEventId" href="{% url 'create-new-event' %}">Create Event</a>
+        <a id="editEventId" href="{% url 'edit-event' %}">Edit Event</a>
+        <a href="{% url 'events-registered-for' %}">Events Registered For</a>
+        <a href="{% url 'logout' %}">Logout</a>
+        <br><br><br>
+
         <fieldset>
             {{ form.as_p }}
         </fieldset>

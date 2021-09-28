@@ -15,7 +15,7 @@ def user_registration(request):
         form = RegisterUserForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/') # the parameter inside the redirect method takes a string of a Django 'urls.py' name
+            return redirect('/login/') # the parameter inside the redirect method takes a string of a Django 'urls.py' name
     else:
         form = RegisterUserForm()
 
