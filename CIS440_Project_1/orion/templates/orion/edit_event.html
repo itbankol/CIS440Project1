@@ -30,6 +30,7 @@
                 <th>Description</th>
             </tr>
             {% for event in events %}
+            <!-- request.user will return a user object -->
                 {% if request.user == event.author %}
                 <tr>
                     <td>{{ event.title }}</td>

@@ -29,6 +29,7 @@
             <th>Attendees</th>
         </tr>
         {% for event in events %}
+        <!-- user.username will return a string -->
             {% if user.username in event.attendees %}
                 <tr>
                     <td>{{ event.title }}</td>
