@@ -37,6 +37,7 @@
                 <th>Author</th>
                 <th>Event Date</th>
                 <th>Description</th>
+                <th>Sign Up</th>
             </tr>
             {% for event in events %}
             <tr>
@@ -44,6 +45,7 @@
                 <td>{{ event.author }}</td>
                 <td>{{ event.date_of_event }}</td>
                 <td>{{ event.description }}</td>
+                <td><button type="submit" >Register</button></td>
             </tr>
             {% endfor %}
         </table>
