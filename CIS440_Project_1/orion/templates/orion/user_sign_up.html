@@ -16,7 +16,7 @@
     <script language="javascript">
         function checkNum(){
         var num = parseInt(document.getElementById("guest").value);
-        if(num < 0 || num > 10 || isNaN(rate)){
+        if(num < 0 || num > 10 || isNaN(num)){
                 alert("The guest number should be in the range of 0 to 10");
                 document.getElementById("guest").value = "";
             }
