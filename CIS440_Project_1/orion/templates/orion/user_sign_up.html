@@ -8,11 +8,21 @@
         main {padding: 50px;}
         header {width: device-width;
                 height: 100px;
-                background: yellow;
+                border-style: solid;
                 padding: 20px;}
         #note {width: 400px;
                height: 100px;}
     </style>
+    <script language="javascript">
+        function checkNum(){
+        var num = parseInt(document.getElementById("guest").value);
+        if(num < 0 || num > 10 || isNaN(rate)){
+                alert("The guest number should be in the range of 0 to 10");
+                document.getElementById("rate").value = "";
+            }
+        }
+
+    </script>
 </head>
 <body>
     <header>
@@ -20,6 +30,7 @@
         <h3>Time Place</h3>
     </header>
     <main>
+        <form action="myphp.php" method="post">
         <table>
             <tr><td>First Name:</td>
                 <td><input type="text" id="fname"></td></tr>
@@ -30,11 +41,13 @@
             <tr><td>Email:</td>
                 <td><input type="text" id="email"></td></tr>
             <tr><td>Guest number:</td>
-                <td><input type="text" id="guest"></td></tr>
+                <td><input type="text" id="guest" onblur="checkNum()"></td></tr>
             <tr><td>Note</td>
                 <td><input type="text" id="note"></td></tr>
+            <tr><td><button id="submit">Submit</button></td>
+                <td><input id="clear" type="reset" value="Clear" /></td></tr>
         </table>
-        <button id="submit">Submit</button>
+        </form>
     </main>
 </body>
 </html>
