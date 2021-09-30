@@ -40,13 +40,19 @@
                 <th>Sign Up</th>
             </tr>
             {% for event in events %}
+            {% if user.username not in event.attendees %}
             <tr>
                 <td>{{ event.title }}</td>
                 <td>{{ event.author }}</td>
                 <td>{{ event.date_of_event }}</td>
                 <td>{{ event.description }}</td>
-                <td><button>Register</button></td>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input hidden type="text" name="event_object" value="{{ event }}">
+                    <td><button>Register</button></td>
+                </form>
             </tr>
+            {% endif %}
             {% endfor %}
         </table>
            
