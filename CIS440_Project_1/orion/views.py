@@ -11,15 +11,12 @@ def home(request):
     if request.method == 'POST':
         user = request.user
         event_obj = request.POST['event_object']
-
-        print("\n\n\n\n")
         for e in events:
             if str(e) == event_obj:
-                # event_obj
-                print(e)
-        print("\n\n\n\n")
-           
-
+                e.attendees = e.attendees + f" {user.username}"
+                e.save()
+        return redirect('/')       
+             
     return render(request, 'orion/index.html', {'events': events})
 
 
