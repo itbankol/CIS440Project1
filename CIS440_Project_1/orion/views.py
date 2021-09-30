@@ -53,6 +53,16 @@ def blacklist(request):
 @login_required
 def edit_event(request):
     events = Event.objects.all()
+
+    if request.method == "POST":
+        user = request.user
+        event_obj = request.POST['event_object']
+        for e in events:
+            if str(e) == event_obj:
+                e.delete()
+
+        return redirect('/edit-event')
+
     return render(request, 'orion/edit_event.html', {'events': events})
 
 
@@ -64,4 +74,17 @@ def edit_user(request):
 @login_required
 def events_registered_for(request):
     events = Event.objects.all()
+
+    if request.method == "POST":
+        user = request.user
+        event_obj = request.POST['event_object']
+        for e in events:
+            if str(e) == event_obj:
+                x = e.attendees.split()
+                x.remove(f"{user.username}")
+                x = " ".join(x)
+                e.attendees = x
+                e.save()
+        return redirect('/events-registered-for')  
+
     return render(request, 'orion/events_registered_for.html', {'events': events})

@@ -35,6 +35,7 @@
             <th>Author</th>
             <th>Event Date</th>
             <th>Description</th>
+            <th>Cancel Registeration</th>
         </tr>
         {% for event in events %}
         <!-- user.username will return a string -->
@@ -44,6 +45,11 @@
                     <td>{{ event.author }}</td>
                     <td>{{ event.date_of_event }}</td>
                     <td>{{ event.description }}</td>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input hidden type="text" name="event_object" value="{{ event }}">
+                        <td><button>Cancel</button></td>
+                    </form>
                 </tr>
             {% endif %}
         {% endfor %}
