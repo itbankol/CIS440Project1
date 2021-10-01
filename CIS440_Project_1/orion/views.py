@@ -35,12 +35,12 @@ def user_registration(request):
 @login_required
 def create_new_event(request):
     if request.method == 'POST':
-        form = EventCreationForm(request.POST)
+        form = EventCreationForm(request.POST, initial={'author': request.user, 'attendees': 'blank'})
         if form.is_valid():
             form.save()
             return redirect('/')
     else: 
-        form = EventCreationForm()
+        form = EventCreationForm(initial={'author': request.user, 'attendees': 'blank'})
 
     return render(request, 'orion/create_new_event.html', {'form': form})
 

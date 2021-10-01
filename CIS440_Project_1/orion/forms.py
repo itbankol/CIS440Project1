@@ -16,6 +16,11 @@ class RegisterUserForm(UserCreationForm):
 
 
 class EventCreationForm(ModelForm):
+
     class Meta:
         model = Event
-        fields = '__all__'
+        fields = ['title', 'description', 'date_of_event', 'author', 'attendees']
+        widgets = {
+            'author': forms.HiddenInput(),
+            'attendees': forms.HiddenInput(),
+        }
