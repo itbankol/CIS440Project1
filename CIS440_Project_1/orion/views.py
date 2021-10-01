@@ -46,11 +46,6 @@ def create_new_event(request):
 
 
 @login_required
-def blacklist(request):
-    return render(request, 'orion/blacklist.html')
-
-
-@login_required
 def edit_event(request):
     events = Event.objects.all()
 
@@ -64,11 +59,6 @@ def edit_event(request):
         return redirect('/edit-event')
 
     return render(request, 'orion/edit_event.html', {'events': events})
-
-
-@login_required
-def edit_user(request):
-    return render(request, 'orion/edit_user.html')
 
 
 @login_required
