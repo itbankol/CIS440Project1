@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet"  href="{%  static  'css/style.css'  %}">
+</head>
+<body>
+    <h1>Login</h1>
+    <div class="topnav">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'edit-user' %}">Edit User</a>
+        <a href="{% url 'blacklist' %}">Manage Blacklisting</a>
+        <a href="{% url 'create-new-event' %}">Create Event</a>
+        <a href="{% url 'edit-event' %}">Edit Event</a>
+        <a href="{% url 'events-registered-for' %}">Events Registered For</a>
+        <a class="active" href="{% url 'logout' %}">Logout</a>     
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <fieldset>
+            {{ form.as_p }}
+        </fieldset>
+        <br>
+        <button type="submit">Login</button>
+    </form>
+    <br><br><br>
+    <p>Don't have an account? Create one here: <a href="{% url 'user-registration' %}">Create User</a></p>
+</body>
+</html>

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,19 +6,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-
-    <link rel="stylesheet" type="text/css" href="style.css">
+    
+    <link rel="stylesheet"  href="{%  static  'css/style.css'  %}">
 </head>
 <body>
     <h1>Event Management System</h1>
-    <a id="homeId" href="{% url 'home' %}">Create User</a>
-    <a id="createUserId" href="{% url 'user-registration' %}">Create User</a>
-    <a id="editUserId" href="{% url 'edit-user' %}">Edit User</a>
-    <a id="blacklistingId" href="{% url 'blacklist' %}">Manage Blacklisting</a>
-    <a id="createEventId" href="{% url 'create-new-event' %}">Create Event</a>
-    <a id="editEventId" href="{% url 'edit-event' %}">Edit Event</a>
-
-    <div id="body window"></div>
+    
+    <div class="topnav">
+        <a class="active" href="{% url 'home' %}">Home</a>
+        <a href="{% url 'edit-user' %}">Edit User</a>
+        <a href="{% url 'blacklist' %}">Manage Blacklisting</a>
+        <a href="{% url 'create-new-event' %}">Create Event</a>
+        <a href="{% url 'edit-event' %}">Edit Event</a>
+        <a href="{% url 'events-registered-for' %}">Events Registered For</a>
+        <a href="{% url 'logout' %}">Logout</a>     
+    </div>
+    <br><br><br><br>
+    <div id="body window">
+        <!-- Event Listbox -->
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Event Date</th>
+                <th>Description</th>
+            </tr>
+            {% for event in events %}
+            <tr>
+                <td>{{ event.title }}</td>
+                <td>{{ event.author }}</td>
+                <td>{{ event.date_of_event }}</td>
+                <td>{{ event.description }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+           
+    </div>
 
 </body>
 </html>

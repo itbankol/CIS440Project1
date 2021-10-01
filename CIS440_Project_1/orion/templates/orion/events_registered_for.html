@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Event</title>
+    <title>Events Registered For</title>
     <link rel="stylesheet"  href="{%  static  'css/style.css'  %}">
     <style>  
         table, th, td {
@@ -19,41 +19,39 @@
     </style>
 </head>
 <body>
-    <h1>Edit or Delete Your Event(s)</h1>
+    <h1>Events Registered For</h1>
     <div class="topnav">
         <a href="{% url 'home' %}">Home</a>
         <a href="{% url 'edit-user' %}">Edit User</a>
         <a href="{% url 'blacklist' %}">Manage Blacklisting</a>
         <a href="{% url 'create-new-event' %}">Create Event</a>
-        <a class="active" href="{% url 'edit-event' %}">Edit Event</a>
-        <a href="{% url 'events-registered-for' %}">Events Registered For</a>
+        <a href="{% url 'edit-event' %}">Edit Event</a>
+        <a class="active" href="{% url 'events-registered-for' %}">Events Registered For</a>
         <a href="{% url 'logout' %}">Logout</a>     
     </div>
     <br><br><br>
 
-    <div>
-        <table>
-            <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Event Date</th>
-                <th>Description</th>
-                <th>Attendees</th>
-            </tr>
-            {% for event in events %}
-            <!-- request.user will return a user object -->
-                {% if request.user == event.author %}
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Event Date</th>
+            <th>Description</th>
+        </tr>
+        {% for event in events %}
+        <!-- user.username will return a string -->
+            {% if user.username in event.attendees %}
                 <tr>
                     <td>{{ event.title }}</td>
                     <td>{{ event.author }}</td>
                     <td>{{ event.date_of_event }}</td>
                     <td>{{ event.description }}</td>
-                    <td>{{ event.attendees }}</td>
                 </tr>
-                {% endif %}
-            {% endfor %}
-        </table>
-    </div>
-	
+            {% endif %}
+        {% endfor %}
+    </table>
+
+    <br><br><br>
+    <p></p>
 </body>
 </html>
