@@ -7,6 +7,16 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def home(request):
     events = Event.objects.all()
+    
+    if request.method == 'POST':
+        user = request.user
+        event_obj = request.POST['event_object']
+        for e in events:
+            if str(e) == event_obj:
+                e.attendees = e.attendees + f" {user.username}"
+                e.save()
+        return redirect('/')       
+             
     return render(request, 'orion/index.html', {'events': events})
 
 
