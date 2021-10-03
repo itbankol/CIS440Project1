@@ -55,3 +55,21 @@ def edit_event(request):
 def events_registered_for(request):
     events = Event.objects.all()
     return render(request, 'orion/events_registered_for.html', {'events': events})
+
+
+@login_required
+def sign_up_event(request):
+    eventID = request.POST.get("event_object")
+    event_to_register = Event.objects.get(id=eventID)
+    return render(request, 'orion/user_sign_up.html', {'event': event_to_register, 'attendee': request.user})
+
+
+@login_required()
+def submit_sign_up(request):
+    username = request.user.username
+    eventID = request.POST.get("event_object")
+    event_to_register = Event.objects.get(id=eventID)
+    event_to_register.attendees += " " + username
+    event_to_register.save()
+    events = Event.objects.all()
+    return render(request, 'orion/index.html', {'events': events})

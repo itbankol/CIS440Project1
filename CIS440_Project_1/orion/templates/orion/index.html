@@ -40,7 +40,7 @@
                 <td>{{ event.date_of_event }}</td>
                 <td>{{ event.description }}</td>
             </tr>
-                <form method="POST">
+                <form action="{% url 'sign-up-event' %}" method="POST">
                     {% csrf_token %}
                     <input hidden type="text" name="event_object" value="{{ event }}">
                     <td><button>Register</button></td>

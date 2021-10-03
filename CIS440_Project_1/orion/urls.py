@@ -10,4 +10,6 @@ urlpatterns = [
     path('create-new-event/', views.create_new_event, name='create-new-event'),
     path('edit-event/', views.edit_event, name='edit-event'),
     path('events-registered-for', views.events_registered_for, name='events-registered-for'),
+    path('register/', views.sign_up_event, name='sign-up-event'),
+    path('submit-sign-up/', views.submit_sign_up, name='submit-sign-up')
 ]
