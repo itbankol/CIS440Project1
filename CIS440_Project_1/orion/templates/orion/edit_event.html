@@ -22,8 +22,6 @@
     <h1>Edit or Delete Your Event(s)</h1>
     <div class="topnav">
         <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'edit-user' %}">Edit User</a>
-        <a href="{% url 'blacklist' %}">Manage Blacklisting</a>
         <a href="{% url 'create-new-event' %}">Create Event</a>
         <a class="active" href="{% url 'edit-event' %}">Edit Event</a>
         <a href="{% url 'events-registered-for' %}">Events Registered For</a>
@@ -39,6 +37,7 @@
                 <th>Event Date</th>
                 <th>Description</th>
                 <th>Attendees</th>
+                <th>Delete Event</th>
             </tr>
             {% for event in events %}
             <!-- request.user will return a user object -->
@@ -49,6 +48,11 @@
                     <td>{{ event.date_of_event }}</td>
                     <td>{{ event.description }}</td>
                     <td>{{ event.attendees }}</td>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input hidden type="text" name="event_object" value="{{ event }}">
+                        <td><button>Delete</button></td>
+                    </form>
                 </tr>
                 {% endif %}
             {% endfor %}

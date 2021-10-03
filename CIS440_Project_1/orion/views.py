@@ -35,12 +35,12 @@ def user_registration(request):
 @login_required
 def create_new_event(request):
     if request.method == 'POST':
-        form = EventCreationForm(request.POST)
+        form = EventCreationForm(request.POST, initial={'author': request.user, 'attendees': 'blank'})
         if form.is_valid():
             form.save()
             return redirect('/')
     else: 
-        form = EventCreationForm()
+        form = EventCreationForm(initial={'author': request.user, 'attendees': 'blank'})
 
     return render(request, 'orion/create_new_event.html', {'form': form})
 
@@ -48,28 +48,33 @@ def create_new_event(request):
 @login_required
 def edit_event(request):
     events = Event.objects.all()
+
+    if request.method == "POST":
+        user = request.user
+        event_obj = request.POST['event_object']
+        for e in events:
+            if str(e) == event_obj:
+                e.delete()
+
+        return redirect('/edit-event')
+
     return render(request, 'orion/edit_event.html', {'events': events})
 
 
 @login_required
 def events_registered_for(request):
     events = Event.objects.all()
+
+    if request.method == "POST":
+        user = request.user
+        event_obj = request.POST['event_object']
+        for e in events:
+            if str(e) == event_obj:
+                x = e.attendees.split()
+                x.remove(f"{user.username}")
+                x = " ".join(x)
+                e.attendees = x
+                e.save()
+        return redirect('/events-registered-for')  
+
     return render(request, 'orion/events_registered_for.html', {'events': events})
-
-
-@login_required
-def sign_up_event(request):
-    eventID = request.POST.get("event_object")
-    event_to_register = Event.objects.get(id=eventID)
-    return render(request, 'orion/user_sign_up.html', {'event': event_to_register, 'attendee': request.user})
-
-
-@login_required()
-def submit_sign_up(request):
-    username = request.user.username
-    eventID = request.POST.get("event_object")
-    event_to_register = Event.objects.get(id=eventID)
-    event_to_register.attendees += " " + username
-    event_to_register.save()
-    events = Event.objects.all()
-    return render(request, 'orion/index.html', {'events': events})
