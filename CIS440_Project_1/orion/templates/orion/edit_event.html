@@ -7,19 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Event</title>
     <link rel="stylesheet"  href="{%  static  'css/style.css'  %}">
-    <style>  
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 10px;
-            padding-right: 18px;
-        }
-    </style>
 </head>
 <body>
-    <h1>Edit or Delete Your Event(s)</h1>
+    <div id="orionLogo"> 
+        <h1 id="titleBar">Edit or Delete Your Event(s)</h1>
+    </div>
     <div class="topnav">
         <a href="{% url 'home' %}">Home</a>
         <a href="{% url 'create-new-event' %}">Create Event</a>

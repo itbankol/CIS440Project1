@@ -7,19 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events Registered For</title>
     <link rel="stylesheet"  href="{%  static  'css/style.css'  %}">
-    <style>  
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 10px;
-            padding-right: 18px;
-        }
-    </style>
 </head>
 <body>
-    <h1>Events Registered For</h1>
+    <div id="orionLogo"> 
+        <h1 id="titleBar">Events Registered For</h1>
+    </div>
     <div class="topnav">
         <a href="{% url 'home' %}">Home</a>
         <a href="{% url 'create-new-event' %}">Create Event</a>

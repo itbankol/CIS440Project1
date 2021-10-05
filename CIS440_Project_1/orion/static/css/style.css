@@ -2,7 +2,8 @@
 body {
 	text-align: 		center;
 	font-family: 		sans-serif;
-	background-image: url('/static/img/Orion_background.jpg');
+	color: white;
+	background-image: url('/static/img/orion_background_body.jpg');
 }
 
 h2 {
@@ -14,16 +15,12 @@ button {
 }
 
 table, th, td {
-	border: 1px solid black;
+	border: 1px solid white;
 	border-collapse: collapse;
 }
 th, td {
 	padding: 10px;
 	padding-right: 18px;
-}
-
-.helptext {
-	list-style-type: none;
 }
 
 /* Add a black background color to the top navigation */
@@ -52,4 +49,17 @@ th, td {
   .topnav a.active {
 	background-color: #04AA6D;
 	color: white;
+  }
+
+  #orionLogo {
+	  background-image: url('/static/img/orion_header.jpg');
+	  background-position-x: center;
+	  background-size:cover;
+	  background-repeat: no-repeat;
+	  height: 4em;
+	  padding-top: 2em;
+	}
+
+  #titleBar {
+	  margin-top: 0%;
   }

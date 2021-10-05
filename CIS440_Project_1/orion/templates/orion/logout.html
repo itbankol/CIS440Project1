@@ -9,7 +9,12 @@
     <link rel="stylesheet"  href="{%  static  'css/style.css'  %}">
 </head>
 <body>
-    <h1>You are now logged out</h1>
+    <div id="orionLogo"> 
+        <h1 id="titleBar">You are now logged out</h1>
+    </div>
+    <div class="topnav">
+        <a class="active" href="{% url 'home' %}">Home</a>   
+    </div>
     <br><br>
     <p>To login please go here: <a href="{% url 'login' %}">Login</a></p>
 </body>
