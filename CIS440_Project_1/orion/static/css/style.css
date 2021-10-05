@@ -1,7 +1,8 @@
+
 body {
 	text-align: 		center;
 	font-family: 		sans-serif;
-	background-color: 	cornsilk;
+	background-image: url("{% static 'Orion_background.jpg' %}");
 }
 
 h2 {
@@ -12,16 +13,6 @@ button {
 	font-size: 			1.5em;
 }
 
-#editWindow {
-    width: 50%;
-    background-color: coral;
-}
-
-#listWindow {
-    width: 50%;
-    background-color: darkcyan;
-}
-
 table, th, td {
 	border: 1px solid black;
 	border-collapse: collapse;
@@ -29,6 +20,10 @@ table, th, td {
 th, td {
 	padding: 10px;
 	padding-right: 18px;
+}
+
+.helptext {
+	list-style-type: none;
 }
 
 /* Add a black background color to the top navigation */
